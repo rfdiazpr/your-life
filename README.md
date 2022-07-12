@@ -1,6 +1,6 @@
 # Your Life
 
-A visualization of your life, as divided into years, months, and weeks.
+A visualization of your ~~life project, as divided into years, months, and weeks.
 
 ## Demos
  - **[Your life in Years](https://bryanbraun.github.io/your-life/years.html)**
