@@ -1,4 +1,4 @@
-# Your Life
+# Your ~~Life~~ Project
 
 A visualization of your ~~life~~ project, as divided into years, months, and weeks.
 
