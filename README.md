@@ -3,7 +3,7 @@
 A visualization of your ~~life~~ project, as divided into years, months, and weeks.
 
 ## Demos
- - **[Your life in Years](https://rfdiaz.github.io/your-project/years.html)**
+ - **[Your life in Years](https://rfdiazpr.github.io/your-project/years.html)**
  - **[Your life in Months](https://bryanbraun.github.io/your-life/months.html)**
  - **[Your life in Weeks](https://bryanbraun.github.io/your-life/weeks.html)**
 
