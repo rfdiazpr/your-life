@@ -130,6 +130,14 @@
   function _getDateOfBirth() {
     return new Date(yearEl.value, monthEl.value, dayEl.value);
   }
+  
+  function _getProjectStartDate() {
+    return new Date(yearEl.value, monthEl.value, dayEl.value);
+  }
+  
+  function _getProjectEndDate() {
+    return new Date(yearEl.value, monthEl.value, dayEl.value);
+  }
 
   function _repaintItems(number) {
     for (var i = 0; i < items.length; i++) {
