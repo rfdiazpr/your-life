@@ -2,9 +2,9 @@
  * Interactive form and chart events / logic.
  */
 (function () {
-  var yearEl = document.getElementById('year'),
-    monthEl = document.getElementById('month'),
-    dayEl = document.getElementById('day'),
+  var syearEl = document.getElementById('syear'),
+    smonthEl = document.getElementById('smonth'),
+    sdayEl = document.getElementById('sday'),
     unitboxEl = document.getElementById('unitbox'),
     unitText = document.querySelector('.unitbox-label').textContent.toLowerCase(),
     items = document.querySelectorAll('.chart li'),
@@ -41,9 +41,9 @@
 
     // Save date of birth in local storage
     localStorage.setItem("PSD", JSON.stringify({
-      month: monthEl.value,
-      year: yearEl.value,
-      day: dayEl.value
+      month: smonthEl.value,
+      year: syearEl.value,
+      day: sdayEl.value
     }));
 
     if (_dateIsValid()) {
@@ -79,8 +79,8 @@
 
   function calculateElapsedTime() {
     var currentDate = new Date(),
-      dateOfBirth = _getDateOfBirth(),
-      diff = currentDate.getTime() - dateOfBirth.getTime(),
+      projectStartDate = _getprojectStartDate(),
+      diff = currentDate.getTime() - projectStartDate.getTime(),
       elapsedTime;
 
     switch (unitText) {
@@ -90,9 +90,9 @@
         // with a diffing strategy will result in build-up over time. Instead, we'll add up
         // 52 per elapsed full year, and only diff the weeks on the current partial year.
         var elapsedYears = (new Date(diff).getUTCFullYear() - 1970);
-        var isThisYearsBirthdayPassed = (currentDate.getTime() > new Date(currentDate.getUTCFullYear(), monthEl.value, dayEl.value).getTime());
+        var isThisYearsBirthdayPassed = (currentDate.getTime() > new Date(currentDate.getUTCFullYear(), smonthEl.value, sdayEl.value).getTime());
         var birthdayYearOffset = isThisYearsBirthdayPassed ? 0 : 1;
-        var dateOfLastBirthday = new Date(currentDate.getUTCFullYear() - birthdayYearOffset, monthEl.value, dayEl.value);
+        var dateOfLastBirthday = new Date(currentDate.getUTCFullYear() - birthdayYearOffset, smonthEl.value, sdayEl.value);
         var elapsedDaysSinceLastBirthday = Math.floor((currentDate.getTime() - dateOfLastBirthday.getTime()) / (1000 * 60 * 60 * 24));
         var elapsedWeeks = (elapsedYears * 52) + Math.floor(elapsedDaysSinceLastBirthday / 7);
         elapsedTime = elapsedWeeks;
@@ -127,18 +127,14 @@
     return monthEl.checkValidity() && dayEl.checkValidity() && yearEl.checkValidity();
   }
 
-  function _getDateOfBirth() {
-    return new Date(yearEl.value, monthEl.value, dayEl.value);
-  }
-  
   function _getProjectStartDate() {
-    return new Date(yearEl.value, monthEl.value, dayEl.value);
+    return new Date(syearEl.value, smonthEl.value, sdayEl.value);
   }
   
-  function _getProjectEndDate() {
-    return new Date(yearEl.value, monthEl.value, dayEl.value);
+  function _getProjectFinishDate() {
+    return new Date(fyearEl.value, fmonthEl.value, fdayEl.value);
   }
-
+  
   function _repaintItems(number) {
     for (var i = 0; i < items.length; i++) {
       if (i < number) {
@@ -149,24 +145,46 @@
     }
   }
 
-  function _loadStoredValueOfDOB() {
-    var DOB = JSON.parse(localStorage.getItem('DOB'));
+  function _loadStoredValueOfPSD() {
+    var PSD = JSON.parse(localStorage.getItem('PSD'));
 
-    if (!DOB) {
+    if (!PSD) {
       return;
     }
 
-    if (DOB.month >= 0 && DOB.month < 12) {
-      monthEl.value = DOB.month
+    if (PSD.month >= 0 && PSD.month < 12) {
+      smonthEl.value = PSD.month
     }
 
-    if (DOB.year) {
-      yearEl.value = DOB.year
+    if (PSD.year) {
+      syearEl.value = PSD.year
     }
 
-    if (DOB.day > 0 && DOB.day < 32) {
-      dayEl.value = DOB.day
+    if (PSD.day > 0 && PSD.day < 32) {
+      sdayEl.value = PSD.day
     }
     _handleDateChange();
   }
+  
+  function _loadStoredValueOfPFD() {
+    var PFD = JSON.parse(localStorage.getItem('PFD'));
+
+    if (!PFD) {
+      return;
+    }
+
+    if (PFD.month >= 0 && PFD.month < 12) {
+      fmonthEl.value = PFD.month
+    }
+
+    if (PFD.year) {
+      fyearEl.value = PFD.year
+    }
+
+    if (PFD.day > 0 && PFD.day < 32) {
+      fdayEl.value = PFD.day
+    }
+    _handleDateChange();
+  }
+
 })();
