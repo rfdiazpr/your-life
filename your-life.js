@@ -30,7 +30,7 @@
   monthEl.selectedIndex = -1;
 
   // Load default values
-  _loadStoredValueOfDOB();
+  _loadStoredValueOfPSD();
 
   // Event Handlers
   function _handleUnitChange(e) {
@@ -40,7 +40,7 @@
   function _handleDateChange(e) {
 
     // Save date of birth in local storage
-    localStorage.setItem("DOB", JSON.stringify({
+    localStorage.setItem("PSD", JSON.stringify({
       month: monthEl.value,
       year: yearEl.value,
       day: dayEl.value
