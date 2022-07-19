@@ -17,8 +17,30 @@
       <option value="weeks">Weeks</option>
     </select>
   </div>
-  <form class="dob" action="#">
+  <form class="psd" action="#">
     <p class="instruction">Enter the project start date</p>
+    <label for="month" class="visuallyhidden">Month</label>
+    <select name="month" class="month" id="month" required>
+      <option value="0">January</option>
+      <option value="1">February</option>
+      <option value="2">March</option>
+      <option value="3">April</option>
+      <option value="4">May</option>
+      <option value="5">June</option>
+      <option value="6">July</option>
+      <option value="7">August</option>
+      <option value="8">September</option>
+      <option value="9">October</option>
+      <option value="10">November</option>
+      <option value="11">December</option>
+    </select>
+    <label for="day" class="visuallyhidden">Day</label>
+    <input type="text" class="day" id="day" placeholder="31" pattern="\d{0,2}" required/>
+    <label for="year" class="visuallyhidden">Year</label>
+    <input type="text" class="year" id="year" placeholder="1999" pattern="\d{4}" required/>
+    
+  <form class="pfd" action="#">
+    <p class="instruction">Enter the project finish date</p>
     <label for="month" class="visuallyhidden">Month</label>
     <select name="month" class="month" id="month" required>
       <option value="0">January</option>
