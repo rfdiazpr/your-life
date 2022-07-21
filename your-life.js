@@ -17,17 +17,17 @@
 
   // Set listeners
   unitboxEl.addEventListener('change', _handleUnitChange);
-  yearEl.addEventListener('input', _handleDateChange);
-  yearEl.addEventListener('keydown', _handleUpdown);
-  yearEl.addEventListener('blur', _unhideValidationStyles);
-  monthEl.addEventListener('change', _handleDateChange);
-  monthEl.addEventListener('keydown', _handleUpdown);
-  dayEl.addEventListener('input', _handleDateChange);
-  dayEl.addEventListener('blur', _unhideValidationStyles);
-  dayEl.addEventListener('keydown', _handleUpdown);
+  syearEl.addEventListener('input', _handleDateChange);
+  syearEl.addEventListener('keydown', _handleUpdown);
+  syearEl.addEventListener('blur', _unhideValidationStyles);
+  smonthEl.addEventListener('change', _handleDateChange);
+  smonthEl.addEventListener('keydown', _handleUpdown);
+  sdayEl.addEventListener('input', _handleDateChange);
+  sdayEl.addEventListener('blur', _unhideValidationStyles);
+  sdayEl.addEventListener('keydown', _handleUpdown);
 
   // Ensure the month is unselected by default.
-  monthEl.selectedIndex = -1;
+  smonthEl.selectedIndex = -1;
 
   // Load default values
   _loadStoredValueOfPSD();
