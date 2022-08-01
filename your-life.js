@@ -2,9 +2,9 @@
  * Interactive form and chart events / logic.
  */
 (function () {
-  var syearEl = document.getElementById('syear'),
-    smonthEl = document.getElementById('smonth'),
-    sdayEl = document.getElementById('sday'),
+  var sYearEl = document.getElementById('sYear'),
+    sMonthEl = document.getElementById('sMonth'),
+    sDayEl = document.getElementById('sDay'),
     unitboxEl = document.getElementById('unitbox'),
     unitText = document.querySelector('.unitbox-label').textContent.toLowerCase(),
     items = document.querySelectorAll('.chart li'),
@@ -17,17 +17,17 @@
 
   // Set listeners
   unitboxEl.addEventListener('change', _handleUnitChange);
-  syearEl.addEventListener('input', _handleDateChange);
-  syearEl.addEventListener('keydown', _handleUpdown);
-  syearEl.addEventListener('blur', _unhideValidationStyles);
-  smonthEl.addEventListener('change', _handleDateChange);
-  smonthEl.addEventListener('keydown', _handleUpdown);
-  sdayEl.addEventListener('input', _handleDateChange);
-  sdayEl.addEventListener('blur', _unhideValidationStyles);
-  sdayEl.addEventListener('keydown', _handleUpdown);
+  sYearEl.addEventListener('input', _handleDateChange);
+  sYearEl.addEventListener('keydown', _handleUpdown);
+  sYearEl.addEventListener('blur', _unhideValidationStyles);
+  sMonthEl.addEventListener('change', _handleDateChange);
+  sMonthEl.addEventListener('keydown', _handleUpdown);
+  sDayEl.addEventListener('input', _handleDateChange);
+  sDayEl.addEventListener('blur', _unhideValidationStyles);
+  sDayEl.addEventListener('keydown', _handleUpdown);
 
   // Ensure the month is unselected by default.
-  smonthEl.selectedIndex = -1;
+  sMonthEl.selectedIndex = -1;
 
   // Load default values
   _loadStoredValueOfPSD();
@@ -41,9 +41,9 @@
 
     // Save date of birth in local storage
     localStorage.setItem("PSD", JSON.stringify({
-      month: smonthEl.value,
-      year: syearEl.value,
-      day: sdayEl.value
+      month: sMonthEl.value,
+      year: sYearEl.value,
+      day: sDayEl.value
     }));
 
     if (_dateIsValid()) {
@@ -128,11 +128,11 @@
   }
 
   function _getProjectStartDate() {
-    return new Date(syearEl.value, smonthEl.value, sdayEl.value);
+    return new Date(sYearEl.value, sMonthEl.value, sDayEl.value);
   }
   
   function _getProjectFinishDate() {
-    return new Date(fyearEl.value, fmonthEl.value, fdayEl.value);
+    return new Date(fYearEl.value, fMonthEl.value, fDayEl.value);
   }
   
   function _repaintItems(number) {
@@ -174,15 +174,15 @@
     }
 
     if (PFD.month >= 0 && PFD.month < 12) {
-      fmonthEl.value = PFD.month
+      fMonthEl.value = PFD.month
     }
 
     if (PFD.year) {
-      fyearEl.value = PFD.year
+      fYearEl.value = PFD.year
     }
 
     if (PFD.day > 0 && PFD.day < 32) {
-      fdayEl.value = PFD.day
+      fDayEl.value = PFD.day
     }
     _handleDateChange();
   }
